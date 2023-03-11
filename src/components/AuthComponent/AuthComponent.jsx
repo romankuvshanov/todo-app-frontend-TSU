@@ -27,38 +27,38 @@ export default function AuthComponent() {
       {/* Здесь лучше использовать компонент или input с label? Как удобнее передавать props?
        Ломается автодополнение ide*/}
       <FormInputComponent
-        title={"Login"}
+        title={"Логин"}
         inputProps={{
           id: "input-login",
           name: "login",
           type: "text",
           autoFocus: true,
           required: true,
-          placeholder: "Your Login",
+          placeholder: "Ваш логин",
         }}
       ></FormInputComponent>
 
       <FormInputComponent
-        title={"Password"}
+        title={"Пароль"}
         inputProps={{
           id: "input-password",
           name: "password",
           type: "password",
           required: true,
-          placeholder: "Your password",
+          placeholder: "Ваш пароль",
         }}
       ></FormInputComponent>
 
       {loginWasNotSuccessful && (
         <p className={`auth-component__error-message`}>
-          Login and/or password were incorrect. Please, try again
+          Логин и/или пароль не правильны. Пожалуйста, попробуйте, снова.
         </p>
       )}
 
       <ButtonComponent
         onClick={() => setLoginWasNotSuccessful(false)}
         type={"submit"}
-        title={"Log in"}
+        title={"Войти"}
       ></ButtonComponent>
     </form>
   );
