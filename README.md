@@ -39,32 +39,46 @@ Instead, it will copy all the configuration files and the transitive dependencie
 
 You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
+## Структура
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+public - директория с публичной точкой входа в приложение
+└─── index.html - точка входа и настройки сборки
 
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+src - корневая директория для скриптов
+│ app - для инициализация провайдеров и сервисов уровня приложения
+│ │ providers - хранилища состояний и контекста приложения
+│ │ │ _provider_name_
+│ │ │ │ index.js - реэкспорт провайдера
+│ │ │ └─── _provider_name_.jsx - HOC провайдер. Инициализатор сервиса, который подключается в app
+│ │ └─── index.js - комбинированный из множества провайдеров провайдер (для упрощения подключения)
+│ │ App.test.js - тест для корневого элемента
+│ └─── App.jsx - корневой элемент для подключения провайдеров
+│ layouts - компоненты обертки
+│ └─── _layout_name_.jsx - HOC, может подключатся к апи и хранилищам
+│ │ │ index.js - реэкспорт компонента
+│ │ │ _layout_name_.module.scss - стили компонента
+│ │ └─── _layout_name_.jsx - HOC обертка
+│ modules
+│ │ index.js - реэкспорт компонента
+│ └─── _module_name_.jsx - компонент модуля, может подключатся к апи и хранилищам
+│ pages
+│ └─── _page_name_.jsx - HOC, может подключатся к апи и хранилищам
+│ │ │ _page_name_.module.scss - стили страницы
+│ │ └─── _page_name_.jsx - страница, предназначена для объединения модулей и оберток
+│ └─── index.js - предназначен для подключения страниц к роутеру
+│ shared
+│ │ assets
+│ │ │ images - картинки
+│ │ └─── svg - иконки
+│ │ components - переиспользуемые компоненты
+│ │ │ index.js - реэкспорт компонента
+│ │ │ _component_name_.module.scss - стили компонента
+│ │ └─── _component_name_.jsx - компонент без подключения к хранилищам и апи, все из пропов
+│ │ hooks
+│ │ └─── _hook_.js - вспомогательные хуки
+│ │ lib
+│ │ └─── _lib_.js - вспомогательные функции
+│ └─── styles
+│ │ index.css - для подключения глобальных стилей
+│ └─── overrides.css - для переопределения глобальных стилей
+└─── index.js - точка входа в приложения
