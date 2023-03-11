@@ -1,11 +1,11 @@
-.form-input-component__input {
+.input__container {
+  margin: 20px 0;
+}
+
+.input__component {
   width: 100%;
   height: 40px;
   margin: 5px 0;
   padding: 3px 7px;
   font-size: 17px;
-}
-
-.form-input-component__container {
-  margin: 20px 0;
 }
